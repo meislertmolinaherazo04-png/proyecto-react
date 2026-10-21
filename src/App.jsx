@@ -3,6 +3,7 @@ import Curso from "./componentes/Curso"
 import Footer from "./componentes/Footer"
 import NavBar from "./componentes/NavBar"
 import RegistroAprendiz from "./componentes/RegistroAprendiz"
+import PresentacionAprendiz from "./componentes/PresentacionAprendiz"
 
 
 function App() {
@@ -67,7 +68,9 @@ function App() {
         <p>Explora más opciones de aprendizaje en nuestra plataforma.</p>
         
         <RegistroAprendiz/>
-        
+
+        <PresentacionAprendiz/>
+
         <Footer />
         
 

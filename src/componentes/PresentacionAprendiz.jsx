@@ -1,51 +1,65 @@
+import { useState } from "react";
+
 function PresentacionAprendiz() {
     const [nombre, setNombre] = useState("");
     const [curso, setCurso] = useState("");
+    const [mensaje, setMensaje]= useState("");
     
+    function manejarEnvio(evento) {
+        evento.preventDefault();
+
+        if (nombre.trim() === ""  || curso.trim() === "") {
+            setMensaje(`por favor, completar los campos.`)
+            return; 
+        }
+
+        setMensaje(`¡Formulario enviado Nombre: ${nombre}, curso de interés: ${curso}.!`);
+        setNombre("");
+        setCurso("");
+    }
     return (
-    <div>
+        <div>
 
-        <h2>Mi presentación</h2>
+            <h2>Mi presentación</h2>
 
+            <form onSubmit={manejarEnvio}>
 
-        <label htmlFor="nombre Presentacion">Escribe tu nombre:</label>
-
-
-        <input
-            id="nombrePresentacion"
-            type="text"
-            value={nombre}
-            onChange={(evento) => setNombre (evento.target.value)}
-            placeholder="Ejemplo: Gabriel"
-        />
+            <label htmlFor="nombre Presentacion">Escribe tu nombre:</label>
 
 
-        <br />
-        <br />
+            <input
+                id="nombrePresentacion"
+                type="text"
+                value={nombre}
+                onChange={(evento) => setNombre (evento.target.value)}
+                placeholder="Ejemplo: Gabriel"
+            />
 
+            <br />
 
-        <label htmlFor="cursoPresentacion">¿Qué curso te interesa?</label>
+            <label htmlFor="cursoPresentacion">¿Qué curso te interesa?</label>
 
+            <input
+                id="cursoPresentacion"
+                type="text"
+                value={curso}
+                onChange={(evento) => setCurso(evento.target.value)}
+                placeholder="Ejemplo: React"
+            />
 
-        <input
-            id="cursoPresentacion"
-            type="text"
-            value={curso}
-            onChange={(evento) => setCurso(evento.target.value)}
-            placeholder="Ejemplo: React"
-        />
+            <br />
+            <br />
 
-        <h3>Mis datos</h3>
+            <button type="submit">
+                Enviar formulario
+            </button>
 
-        <p>Mi nombre es: {nombre}</p>
+            </form>
+            {mensaje !== "" && (
+                <p>{mensaje}</p>
+            )}
 
-        <p>Me interesa aprender: {curso}</p>
-
-        <p>
-            ¡Hola, (nombre)! Te interesa aprender (curso).
-        </p>
-
-    </div>
+        </div>
     );
 }
 
