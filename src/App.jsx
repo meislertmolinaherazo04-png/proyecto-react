@@ -5,6 +5,35 @@ import NavBar from "./componentes/NavBar"
 import RegistroAprendiz from "./componentes/RegistroAprendiz"
 import PresentacionAprendiz from "./componentes/PresentacionAprendiz"
 
+const listaCursos = [
+  { 
+    id: 1, 
+    nombre: "Desarrollo web", 
+    descripcion: "Aprende a crear páginas web modernas y atractivas."
+  },
+
+  { 
+    id: 2, 
+    nombre: "Bases de Datos", 
+    descripcion: "Aprende a gestionar y manipular bases de datos." 
+  },
+
+  { 
+    id: 3, 
+    nombre: "Inteligencia Artificial", 
+    descripcion: "Aprende a desarrollar soluciones basadas en inteligencia artificial." 
+  },
+
+  { id: 4, 
+    nombre: "Programación con Java", 
+    descripcion: "Aprende a usar Java." 
+  },
+
+  { id: 5, 
+    nombre: "Curso de Python", 
+    descripcion: "Aprende a usar Python." 
+  }
+];
 
 function App() {
 
@@ -27,29 +56,18 @@ function App() {
           <h2>Nuestros cursos</h2>
           <p>Ofrecemos una variedad de cursos para ayudarte a desarrollar tus habilidades y alcanzar tus metas profesionales.</p>
 
-          <Curso 
-            nombre="Desarrollo web"
-            descripcion="Aprende a crear paginas web modernas y atractivas."
+          {listaCursos.map((curso) => (
+            <Curso 
+              key={curso.id}
+              nombre={curso.nombre}
+              descripcion={curso.descripcion}
             />
-          <Curso 
-            nombre="Bases de Datos"
-            descripcion="Aprende a gestionar y manipular bases de datos."
-            />
-          <Curso 
-            nombre="Inteligencia Artificiañ"
-            descripcion="Aprende a desarrollar soluciones basadas en inteligencia artifical."
-            />
-
-          <Curso 
-            nombre="Programacion con java"
-            descripcion="Aprende a usar java."
-            />
-
-          <Curso 
-            nombre="Curso de Python"
-            descripcion="Aprende a usar python."
-            />
-
+          ))}
+        </section>
+        
+        <section id="otros cursos">
+          <h2>Otros cursos</h2>
+          <p>Explora más opciones de aprendizaje en nuestra plataforma.</p>
         </section>
 
         <section id="nosotros">
@@ -62,10 +80,10 @@ function App() {
           <p>Puedes contactarnos a través de nuestro correo electrónico o número de teléfono para mas informacion sobre nuestros cursos.</p>
         </section>
 
+        
         </main>
 
-        <h2>Otros cursos</h2>
-        <p>Explora más opciones de aprendizaje en nuestra plataforma.</p>
+        
         
         <RegistroAprendiz/>
 
