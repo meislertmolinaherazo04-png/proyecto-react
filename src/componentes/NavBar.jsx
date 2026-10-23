@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom"
+ 
 function Navbar() {
-    return (
-        <nav>
-            <ul>
-                <li><a href="inicio">Inicio</a></li>
-                <li><a href="cursos">Cursos</a></li>
-                <li><a href="nosotros">Nosotros</a></li>
-                <li><a href="contacto">Contacto</a></li>
-                <li><a href="otroa cursos">Otros Cursos</a></li>
-            </ul>
-        </nav>
-    );
+  return (
+    <nav className="navbar">
+      <Link to="/">Inicio</Link>
+ 
+      <Link to="/cursos">Cursos</Link>
+ 
+      <Link to="/registro">Registro</Link>
+ 
+      <Link to="/administrar-cursos">Administrar Cursos</Link>
+    </nav>
+  );
 }
-
+ 
 export default Navbar;

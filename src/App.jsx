@@ -1,99 +1,65 @@
-import Header from "./componentes/Header"
-import Curso from "./componentes/Curso"
-import Footer from "./componentes/Footer"
-import NavBar from "./componentes/NavBar"
-import RegistroAprendiz from "./componentes/RegistroAprendiz"
-import PresentacionAprendiz from "./componentes/PresentacionAprendiz"
-
-const listaCursos = [
-  { 
-    id: 1, 
-    nombre: "Desarrollo web", 
-    descripcion: "Aprende a crear páginas web modernas y atractivas."
-  },
-
-  { 
-    id: 2, 
-    nombre: "Bases de Datos", 
-    descripcion: "Aprende a gestionar y manipular bases de datos." 
-  },
-
-  { 
-    id: 3, 
-    nombre: "Inteligencia Artificial", 
-    descripcion: "Aprende a desarrollar soluciones basadas en inteligencia artificial." 
-  },
-
-  { id: 4, 
-    nombre: "Programación con Java", 
-    descripcion: "Aprende a usar Java." 
-  },
-
-  { id: 5, 
-    nombre: "Curso de Python", 
-    descripcion: "Aprende a usar Python." 
-  }
-];
-
+import { useState } from "react";
+ 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+ 
+import Header from "./componentes/Header";
+import Navbar from "./componentes/NavBar";
+import Footer from "./componentes/Footer";
+import GestionCursos from "./componentes/GestionCursos";
+ 
+import Inicio from "./vistas/Inicio";
+import Cursos from "./vistas/Cursos";
+import Registro from "./vistas/Registros";
+ 
 function App() {
-
-  function saludar() {
-    alert("¡Bienvenido al Centro nacional Colombo Aleman!");
-  }
+  const [cursos, setCursos] = useState([
+    {
+      id: 1,
+      nombre: "Diseño Web",
+      descripcion: "Creación de interfaces modernas y atractivas.",
+      informacion: "Aprenderás HTML, CSS y fundamentos de diseño web.",
+    },
+    {
+      id: 2,
+      nombre: "Desarrollo de Software",
+      descripcion: "Construcción de aplicaciones tecnológicas.",
+      informacion: "Aprenderás programación y desarrollo de aplicaciones.",
+    },
+    {
+      id: 3,
+      nombre: "Bases de Datos",
+      descripcion: "Diseño y administración de datos.",
+      informacion: "Aprenderás modelado, normalización y SQL.",
+    },
+  ]);
+ 
   return (
-    <div> 
+    <BrowserRouter>
       <Header />
-      <NavBar /> 
-      
-      <main id="inicio">
-        <h2>Bienvenidos a nuestro portal de formacion</h2>
-
-        <button onClick={saludar}>
-          Haz click aqui
-        </button>
-
-        <section id="cursos">
-          <h2>Nuestros cursos</h2>
-          <p>Ofrecemos una variedad de cursos para ayudarte a desarrollar tus habilidades y alcanzar tus metas profesionales.</p>
-
-          {listaCursos.map((curso) => (
-            <Curso 
-              key={curso.id}
-              nombre={curso.nombre}
-              descripcion={curso.descripcion}
-            />
-          ))}
-        </section>
-        
-        <section id="otros cursos">
-          <h2>Otros cursos</h2>
-          <p>Explora más opciones de aprendizaje en nuestra plataforma.</p>
-        </section>
-
-        <section id="nosotros">
-          <h2>Sobre nosotros</h2>
-          <p>Somos un centro de formación comprometido con el desarrollo de nuestros estudiantes y la excelencia educativa.</p>
-        </section>
-
-        <section id="contacto">
-          <h2>Contacto</h2>
-          <p>Puedes contactarnos a través de nuestro correo electrónico o número de teléfono para mas informacion sobre nuestros cursos.</p>
-        </section>
-
-        
-        </main>
-
-        
-        
-        <RegistroAprendiz/>
-
-        <PresentacionAprendiz/>
-
-        <Footer />
-        
-
-    </div>
+ 
+      <Navbar />
+ 
+      <main>
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+ 
+          <Route path="/cursos" element={<Cursos cursos={cursos} />} />
+ 
+          <Route path="/registro" element={<Registro cursos={cursos} />} />
+ 
+          <Route
+            path="/administrar-cursos"
+            element={<GestionCursos cursos={cursos} setCursos={setCursos} />}
+          />
+ 
+          <Route path="*" element={<h2>Página no encontrada</h2>} />
+        </Routes>
+      </main>
+ 
+      <Footer />
+    </BrowserRouter>
   );
 }
-
+ 
 export default App;
+ 
