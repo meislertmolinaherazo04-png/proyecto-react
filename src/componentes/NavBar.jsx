@@ -10,6 +10,8 @@ function Navbar() {
       <Link to="/registro">Registro</Link>
  
       <Link to="/administrar-cursos">Administrar Cursos</Link>
+
+      <Link to="/acerca-de">Acerca de</Link>
     </nav>
   );
 }
