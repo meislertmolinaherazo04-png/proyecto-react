@@ -11,7 +11,20 @@ function Navbar() {
  
       <Link to="/administrar-cursos">Administrar Cursos</Link>
 
+      <Link to="/usuarios">Usuarios</Link>
+
       <Link to="/acerca-de">Acerca de</Link>
+
+      <Link to="/aprendices">Aprendices</Link> 
+
+      <Link to="/instructores">Instructores</Link> 
+
+      <Link to="/fichas">Fichas</Link> 
+
+      <Link to="/competencias">Competencias</Link>
+
+      <Link to="/evaluaciones">Evaluaciones</Link>
+
     </nav>
   );
 }

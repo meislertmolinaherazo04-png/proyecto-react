@@ -10,7 +10,13 @@ import GestionCursos from "./componentes/GestionCursos";
 import Inicio from "./vistas/inicio";
 import Cursos from "./vistas/cursos";
 import Registro from "./vistas/Registros";
-//import AcercaDe from "./vistas/AcercaDe";
+import AcercaDe from "./vistas/AcercaDe";
+import Usuarios from "./vistas/Usuarios";
+import Aprendices from "./vistas/Aprendices";
+import Instructores from "./vistas/Instructores"
+import Fichas from "./vistas/Fichas";
+import Competencias from "./vistas/Competencias";
+import Evaluaciones from "./vistas/Evaluaciones";
 
  
 function App() {
@@ -78,47 +84,30 @@ function App() {
  
         <Routes>
  
-          <Route
-            path="/"
-            element={<Inicio />}
-          />
+          <Route path="/" element={<Inicio /> } />
  
-          <Route
-            path="/cursos"
-            element={
-              <Cursos cursos={cursos} />
-            }
-          />
+          <Route path="/cursos" element={ <Cursos cursos={cursos} /> } />
  
-          <Route
-            path="/registro"
-            element={
-              <Registro cursos={cursos} />
-            }
-          />
+          <Route path="/registro" element={ <Registro cursos={cursos} /> } />
+
+          <Route path="/usuarios" element={ <Usuarios  /> } />
  
-          <Route
-            path="/administrar-cursos"
-            element={
-              <GestionCursos
-                cursos={cursos}
-                setCursos={setCursos}
-              />
-            }
-          />
+          <Route path="/administrar-cursos" element={ <GestionCursos cursos={cursos} setCursos={setCursos} /> } />
  
-          <Route
-          //  path="/acerca-de"
-          //  element={<AcercaDe />}
-          />
+          <Route path="/acerca-de" element={ <AcercaDe /> } />
  
-          <Route
-            path="*"
-            element={
-              <h2>Página no encontrada</h2>
-            }
-          />
- 
+          <Route path="*" element={ <h2>Página no encontrada</h2> } />
+
+          <Route path="/aprendices" element={<Aprendices />} /> 
+
+          <Route path="/instructores" element={<Instructores />} /> 
+
+          <Route path="/fichas" element={<Fichas />} />
+
+          <Route path="/competencias" element={<Competencias />} />
+
+          <Route path="/evaluaciones" element={<Evaluaciones />} />
+
         </Routes>
  
       </main>
