@@ -13,7 +13,7 @@ function Navbar() {
 
       <Link to="/usuarios">Usuarios</Link>
 
-      <Link to="/acerca-de">Acerca de</Link>
+      <Link to="/registro-api">Registro API</Link>
 
       <Link to="/aprendices">Aprendices</Link> 
 
@@ -24,6 +24,8 @@ function Navbar() {
       <Link to="/competencias">Competencias</Link>
 
       <Link to="/evaluaciones">Evaluaciones</Link>
+
+      <Link to="/acerca-de">Acerca de</Link>
 
     </nav>
   );

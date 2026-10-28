@@ -17,6 +17,7 @@ import Instructores from "./vistas/Instructores"
 import Fichas from "./vistas/Fichas";
 import Competencias from "./vistas/Competencias";
 import Evaluaciones from "./vistas/Evaluaciones";
+import RegistroAprendizAPI from "./vistas/RegistroAprendizAPI.jsx";
 
  
 function App() {
@@ -94,7 +95,7 @@ function App() {
  
           <Route path="/administrar-cursos" element={ <GestionCursos cursos={cursos} setCursos={setCursos} /> } />
  
-          <Route path="/acerca-de" element={ <AcercaDe /> } />
+          <Route path="/registro-api" element={ <RegistroAprendizAPI cursos={cursos} setCursos={setCursos} /> } />
  
           <Route path="*" element={ <h2>Página no encontrada</h2> } />
 
@@ -107,6 +108,8 @@ function App() {
           <Route path="/competencias" element={<Competencias />} />
 
           <Route path="/evaluaciones" element={<Evaluaciones />} />
+
+          <Route path="/acerca-de" element={ <AcercaDe /> } />
 
         </Routes>
  

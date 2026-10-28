@@ -5,6 +5,11 @@ function Aprendices() {
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState("");
 
+    const [nombre, setNombre] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [mensaje, setMensaje] = useState("");
+    const [enviado, setEnviado] = useState(false);
+
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then((respuesta) => {
