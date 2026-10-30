@@ -8,7 +8,7 @@ function Aprendices() {
     const [nombre, setNombre] = useState("");
     const [correo, setCorreo] = useState("");
     const [mensaje, setMensaje] = useState("");
-    const [enviado, setEnviado] = useState(false);
+    const [enviando, setEnviando] = useState(false);
 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
@@ -29,8 +29,73 @@ function Aprendices() {
             });
     }, []);
 
+    const enviarPost = (evento) => {
+        evento.preventDefault();
+        setMensaje("");
+        setEnviando(true);
+        
+
+        fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                title: nombre,
+                body: correo,
+                userId: 1
+            })
+        })
+        .then((respuesta) => {
+            if (!respuesta.ok) {
+                throw new Error("No se pudo enviar el registro.");
+            }
+            return respuesta.json();
+        })
+        .then((datos) => {
+            setMensaje(`Solicitud exitosa. Id de prueba: ${datos.id}`);
+            setNombre("");
+            setCorreo("");
+        })
+        .catch(() => {
+            setMensaje("Ocurrió un error al enviar los datos.");
+        })
+        .finally(() => {
+            setEnviado(false);
+        });
+    }
+
     return (
+
         <section>
+            <h2>Registrar aprendiz (prueba)</h2>
+
+            <form>
+                <div>
+                    <label>Nombre completo</label>
+                    <input 
+                        value={nombre}
+                        onChange={(evento) => setNombre(evento.target.value)}
+                        required
+                    /> 
+                </div>
+
+                <div>
+                    <label>Correo electrónico</label>
+                    <input
+                        type="email"
+                        value={correo}
+                        onChange={(evento) => setCorreo(evento.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit" onClick={enviarPost} disabled={enviando}>
+                    {enviando ? "Enviado..." : "Registrar"}
+                </button>
+            </form>
+
+            {mensaje && <p>{mensaje}</p>}
+
+            <hr />
+
             <h2>Aprendices (datos de prueba)</h2>
 
             {cargando && <p>Cargando información...</p>}
@@ -47,6 +112,8 @@ function Aprendices() {
                     ))}
                 </div>
             )}
+
+            
         </section>
     );
 }
